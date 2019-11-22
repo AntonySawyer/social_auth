@@ -9,6 +9,18 @@ body {
   font-size: 24px;
 }
 
+.fb-btn {
+  background-color: #4267b2;
+}
+
+.twitter-btn {
+  background-color: #1da1f2;
+}
+
+.vk-btn {
+  background-color: #4a76a8;
+}
+
 .row {
   justify-content: center;
 }

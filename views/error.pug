@@ -2,5 +2,6 @@ extends layout
 
 block content
   h1= message
+  a.btn.btn-outline-primary(href="/auth/login") Try again
   h2= error.status
   pre #{error.stack}
