@@ -1,0 +1,5 @@
+{
+    "clientID":     "7217177",
+    "clientSecret": "gefrlSJMao3p4mzp1mBS",
+    "callbackURL": "http://localhost:3000/auth/vk/callback"
+}

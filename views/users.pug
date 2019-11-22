@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  div
+    .btn-toolbar(role='toolbar' aria-label='Toolbar with button groups')
+      .btn-group.mr-2(role='group' aria-label='Status group')
+        button.btn.btn-secondary(type='button') Block
+        button.btn.btn-secondary(type='button') Unblock
+      .btn-group.mr-2(role='group' aria-label='Force group')
+        button.btn.btn-secondary(type='button') Delete
+      .btn-group(role='group' aria-label='Utils group')
+        a.btn.btn-outline-secondary(href="/auth/logout") Logout
+    h1 List of users
+    .table-responsive
+      table.table.table-hover
+        thead
+          tr
+            th(scope='col')
+              label
+                input#mainCheckbox(type='checkbox')
+            th(scope='col') Username
+            th(scope='col') Link/email
+            th(scope='col') Status
+            th(scope='col') Fitst login
+            th(scope='col') Last login
+        tbody

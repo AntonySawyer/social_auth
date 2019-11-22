@@ -1,0 +1,5 @@
+{
+  "consumerKey": "TNokp0WoBIWA7zEM7qWuPVG4W",
+  "consumerSecret": "CG48Cwbq4AwDbMNoUeSv7u6NBjgq4s5V3PtY43sc6T69QJ2jx4",
+  "callbackURL": "http://localhost:3000/auth/twitter/callback"
+}
