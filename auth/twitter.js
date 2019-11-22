@@ -9,7 +9,7 @@ passport.serializeUser(function (user, fn) {
 
 passport.deserializeUser(function (data, fn) {
   User.findOne({
-    _id: data._id
+    _id: data.doc._id
   }, (err, user) => fn(err, user));
 });
 
@@ -26,7 +26,7 @@ passport.use(new TwitterStrategy(twitterConfig,
       if (err) {
         return done(err);
       }
-      done(null, user.doc);
+      done(null, user);
     });
   }
 ));

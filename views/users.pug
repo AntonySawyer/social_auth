@@ -4,10 +4,10 @@ block content
   div
     .btn-toolbar(role='toolbar' aria-label='Toolbar with button groups')
       .btn-group.mr-2(role='group' aria-label='Status group')
-        button.btn.btn-secondary(type='button') Block
-        button.btn.btn-secondary(type='button') Unblock
+        button.btn.btn-secondary(type='button' onClick='sendIds("users/block")') Block
+        button.btn.btn-secondary(type='button' onClick='sendIds("users/unblock")') Unblock
       .btn-group.mr-2(role='group' aria-label='Force group')
-        button.btn.btn-secondary(type='button') Delete
+        button.btn.btn-secondary(type='button' onClick='sendIds("users/delete")') Delete
       .btn-group(role='group' aria-label='Utils group')
         a.btn.btn-outline-secondary(href="/auth/logout") Logout
     h1 List of users
@@ -19,8 +19,21 @@ block content
               label
                 input#mainCheckbox(type='checkbox')
             th(scope='col') Username
-            th(scope='col') Link/email
+            th(scope='col') Link
             th(scope='col') Status
             th(scope='col') Fitst login
             th(scope='col') Last login
         tbody
+          each item in users
+            tr
+              td(scope='col')
+                label
+                  input(type='checkbox', id=item._id)
+              td(scope='col') #{item.username}
+              td(scope='col') 
+                a(href=item.link, target='_blank') #{item.link}
+              td(scope='col') #{item.status}
+              td(scope='col') #{item.first_login}
+              td(scope='col') #{item.last_login}
+
+  script(src="javascripts/checkboxWorker.js")
