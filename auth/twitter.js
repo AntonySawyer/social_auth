@@ -7,26 +7,26 @@ passport.serializeUser(function (user, fn) {
   fn(null, user);
 });
 
-passport.deserializeUser(function (id, fn) {
+passport.deserializeUser(function (data, fn) {
   User.findOne({
-    _id: id.doc._id
-  }, function (err, user) {
-    fn(err, user);
-  });
+    _id: data._id
+  }, (err, user) => fn(err, user));
 });
 
 passport.use(new TwitterStrategy(twitterConfig,
   function (accessToken, refreshToken, profile, done) {
+    const userLink = `https://www.twitter.com/profile.php?id=${profile.id}`;
     User.findOrCreate({
-      name: profile.displayName
+      link: userLink
     }, {
-      name: profile.displayName,
-      userid: profile.id
+      username: profile.displayName,
+      link: userLink,
+      status: 'active'
     }, function (err, user) {
       if (err) {
         return done(err);
       }
-      done(null, user);
+      done(null, user.doc);
     });
   }
 ));

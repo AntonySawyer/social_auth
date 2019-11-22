@@ -4,16 +4,19 @@ const passportFacebook = require('../auth/facebook');
 const passportTwitter = require('../auth/twitter');
 const passportVk = require('../auth/vk');
 
-router.get('/login', function (req, res, next) {
-  res.render('login', {
-    title: 'Choose way to authentication'
-  });
+router.get('/', function (req, res, next) {
+  res.redirect('login');
 });
 
-/* LOGOUT ROUTER */
+router.get('/login', function (req, res, next) {
+  res.render('login', {
+    title: 'Authentication by:'
+  })
+});
+
 router.get('/logout', function (req, res) {
   req.logout();
-  res.redirect('/');
+  res.redirect('/login');
 });
 
 router.get('/facebook',
@@ -33,7 +36,7 @@ router.get('/twitter/callback',
     failureRedirect: '/login'
   }),
   function (req, res) {
-    res.redirect('/');
+    res.redirect('/users');
   });
 
 router.get('/vk',
